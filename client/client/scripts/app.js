@@ -35,23 +35,22 @@ var app = {
     }, 3000);
   },
 
-  send: function(message) {
+  send: function(data) {
     app.startSpinner();
-
+    // Clear messages input
+    app.$message.val('');
     // POST the message to the server
     $.ajax({
       url: app.server,
       type: 'POST',
-      data: message,
+      data: JSON.stringify(data),
+      contentType: 'application/json',
       success: function (data) {
-        // Clear messages input
-        app.$message.val('');
-
         // Trigger a fetch to update the messages, pass true to animate
         app.fetch();
       },
       error: function (error) {
-        console.error('chatterbox: Failed to send message', error);
+        console.error('chatterbox: Failed to send message' + data + '.');
       }
     });
   },
