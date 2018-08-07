@@ -51,6 +51,9 @@ var app = {
       },
       error: function (error) {
         console.error('chatterbox: Failed to send message:' + data + '\n' + error);
+      },
+      complete: function() {
+        app.stopSpinner();
       }
     });
   },
