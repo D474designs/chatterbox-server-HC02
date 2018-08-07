@@ -50,7 +50,7 @@ var app = {
         app.fetch();
       },
       error: function (error) {
-        console.error('chatterbox: Failed to send message' + data + '.');
+        console.error('chatterbox: Failed to send message:' + data + '\n' + error);
       }
     });
   },
